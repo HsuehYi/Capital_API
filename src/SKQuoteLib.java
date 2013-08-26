@@ -20,7 +20,8 @@ public interface SKQuoteLib extends StdCallLibrary{
 	public int SKQuoteLib_AttachBest5GetCallBack(FOnNotifyBest5Get d);
 	public int SKQuoteLib_AttachBest5CallBack(FOnNotifyBest5 d);
 	public int SKQuoteLib_AttachTicksGetCallBack(FOnNotifyTicksGet d);
-	public int SKQuoteLib_AttachTicksCallBack(FOnNotifyTicks d); 
+	public int SKQuoteLib_AttachTicksCallBack(FOnNotifyTicks d);
+	public int SKQuoteLib_AttachHistoryTicksGetCallBack(FOnNotifyTicksGet d);
 	public int SKQuoteLib_AttachFutureTradeInfoCallBack(FOnNotifyFutureTradeInfo d);
  
 	public int SKQuoteLib_GetQuoteRequest(int index,QUOTEITEM qitem); 
@@ -44,8 +45,8 @@ public interface SKQuoteLib extends StdCallLibrary{
 	public int SKQuoteLib_GetStrikePrices();
 	public int SKQuoteLib_GetTick(short sMarketNo,short sStockidx,int nPtr,TICK tick); 
 	public int SKQuoteLib_GetVersion(String lpszVersion,IntByReference pnSize);
-	public int SKQuoteLib_RequestStocks(ShortByReference psPageNo, String pStockNos);
-	public int SKQuoteLib_RequestTicks(ShortByReference psPageNo,String s);
+	public int SKQuoteLib_RequestStocks(ShortByReference psPageNo, String pStockNo);
+	public int SKQuoteLib_RequestTicks(ShortByReference psPageNo,String pStockNo);
 	
 	public int SKQuoteLib_RequestServerTime();
 	

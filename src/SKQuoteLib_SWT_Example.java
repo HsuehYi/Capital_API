@@ -14,42 +14,36 @@ public class SKQuoteLib_SWT_Example {
 	static FOnNotifyMarketTot fnmt;
 	static FOnNotifyKLineData fnkld;
 	public static ShortByReference sbr_tick = new ShortByReference((short) -1);
-
+	static int ini;
 	public static void main(String[] args) {
 
 		final Display display = new Display();
 		final Shell shell = new Shell(display);
 		shell.setSize(300, 200);
-		shell.setText("∏sØq≥¯ª˘API");
+		shell.setText("Áæ§ÁõäÂ†±ÂÉπAPI");
 		shell.setLayout(new RowLayout());
 		final SKQuoteLib skquotelib = (SKQuoteLib) Native.loadLibrary(
 				"SKQuoteLib", SKQuoteLib.class);
 		System.out.println("start tw");
 
 		final Button button = new Button(shell, SWT.PUSH);
-		button.setText("±µ¶¨≥¯ª˘");
+		button.setText("Êé•Êî∂Â†±ÂÉπ");
 		final Button close = new Button(shell, SWT.PUSH);
-		close.setText("µ≤ßÙ≥sΩu");
+		close.setText("ÁµêÊùüÈÄ£Á∑ö");
 		final Label connectionlabel = new Label(shell, SWT.SHADOW_IN);
 		connectionlabel.setText("Connecting...");
 		System.out.println("skquotelib =" + skquotelib);
-		final int ini = skquotelib.SKQuoteLib_Initialize("®≠§¿√“¶r∏π","±KΩX");
+		ini = skquotelib.SKQuoteLib_Initialize("Ë∫´ÂàÜË≠âÂ≠óËôü","ÂØÜÁ¢º");
 		System.out.println("inti " + ini);
 		if (ini == 0) {
 			// fnkld=new FOnNotifyKLineData();
 			// fnmt = new FOnNotifyMarketTot(skquotelib,twse_ohlc);
 			// fnq = new FOnNotifyQuote(skquotelib,twse_ohlc);
 			// int kline = skquotelib.SKQuoteLib_AttachKLineDataCallBack(fnkld);
-			int citime = skquotelib
-					.SKQuoteLib_AttchServerTimeCallBack(new FOnNotifyServerTime(
-							skquotelib));
-			int connectioncb = skquotelib
-					.SKQuoteLib_AttachConnectionCallBack(new FOnNotifyConnection(
-							skquotelib));
+			ini = ini + skquotelib.SKQuoteLib_AttchServerTimeCallBack(new FOnNotifyServerTime());
+			ini = ini + skquotelib.SKQuoteLib_AttachConnectionCallBack(new FOnNotifyConnection());
 			// int tot = skquotelib.SKQuoteLib_AttachMarketTotCallBack(fnmt);
-			int c = skquotelib
-					.SKQuoteLib_AttachQuoteCallBack(new FOnNotifyQuote(
-							skquotelib));
+			ini = ini + skquotelib.SKQuoteLib_AttachQuoteCallBack(new FOnNotifyQuote());
 			skquotelib.SKQuoteLib_EnterMonitor();
 		}
 

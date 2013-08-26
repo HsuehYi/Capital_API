@@ -1,13 +1,12 @@
 import java.util.Arrays;
 
+import com.sun.jna.Native;
 import com.sun.jna.win32.StdCallLibrary.StdCallCallback;
 
 
 public class FOnNotifyQuote implements StdCallCallback{
-	private SKQuoteLib skquotelib=null;
-	public FOnNotifyQuote(SKQuoteLib skquotelib){
-		this.skquotelib=skquotelib;
-	}
+	final SKQuoteLib skquotelib = (SKQuoteLib) Native.loadLibrary(
+			"SKOSQuoteLib", SKQuoteLib.class);
 	public void callback(short Market, short Index) {
 		int Status;
 		SKQuoteLib.Stock stock = new SKQuoteLib.Stock();
@@ -21,20 +20,20 @@ public class FOnNotifyQuote implements StdCallCallback{
 	private String[] translation(SKQuoteLib.Stock stock) {
 		double Dot = Math.pow(10, stock.m_sDecimal);
 		String[] result = new String[14];
-		result[0] = new String(stock.m_caStockNo).trim();
-		result[1] = new String(stock.m_caName).trim();
-		result[2] = (stock.m_nBid / Dot) + "";
-		result[3] = stock.m_nBc + "";
-		result[4] = (stock.m_nAsk / Dot) + "";
-		result[5] = stock.m_nAc + "";
-		result[6] = (stock.m_nClose / Dot) + "";
-		result[7] = (stock.m_nClose / Dot) - (stock.m_nRef / Dot) + "";
-		result[8] = ((stock.m_nClose / Dot) / (stock.m_nRef / Dot)) - 1  + "";
-		result[9] = stock.m_nTickQty + "";
-		result[10] = stock.m_nTQty + "";
-		result[11] = (stock.m_nHigh / Dot) + "";
-		result[12] = (stock.m_nLow / Dot) + "";
-		result[13] = (stock.m_nRef / Dot) + "";
+		result[0] = new String(stock.m_caStockNo).trim(); // 布腹
+		result[1] = new String(stock.m_caName).trim(); // 布嘿
+		result[2] = (stock.m_nBid / Dot) + ""; // 禦基
+		result[3] = stock.m_nBc + ""; // 禦秖
+		result[4] = (stock.m_nAsk / Dot) + ""; // 芥基
+		result[5] = stock.m_nAc + ""; // 芥秖
+		result[6] = (stock.m_nClose / Dot) + ""; // Θユ基
+		result[7] = (stock.m_nClose / Dot) - (stock.m_nRef / Dot) + ""; // 害禴
+		result[8] = ((stock.m_nClose / Dot) / (stock.m_nRef / Dot)) - 1  + ""; // 害禴碩
+		result[9] = stock.m_nTickQty + ""; // 虫秖
+		result[10] = stock.m_nTQty + ""; // 羆秖
+		result[11] = (stock.m_nHigh / Dot) + ""; // 程蔼基
+		result[12] = (stock.m_nLow / Dot) + ""; // 程基
+		result[13] = (stock.m_nRef / Dot) + ""; // 琎Μ
 		return result;
 		
 	}
