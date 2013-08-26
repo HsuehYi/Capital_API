@@ -1,3 +1,4 @@
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
 import com.sun.jna.Native;
@@ -20,8 +21,9 @@ public class FOnNotifyQuote implements StdCallCallback{
 	private String[] translation(SKQuoteLib.Stock stock) {
 		double Dot = Math.pow(10, stock.m_sDecimal);
 		String[] result = new String[14];
-		result[0] = new String(stock.m_caStockNo).trim(); // 布腹
-		result[1] = new String(stock.m_caName).trim(); // 布嘿
+		try {
+		result[0] = new String(stock.m_caStockNo, "Big5").trim(); // 布腹
+		result[1] = new String(stock.m_caName, "Big5").trim(); // 布嘿
 		result[2] = (stock.m_nBid / Dot) + ""; // 禦基
 		result[3] = stock.m_nBc + ""; // 禦秖
 		result[4] = (stock.m_nAsk / Dot) + ""; // 芥基
@@ -34,6 +36,10 @@ public class FOnNotifyQuote implements StdCallCallback{
 		result[11] = (stock.m_nHigh / Dot) + ""; // 程蔼基
 		result[12] = (stock.m_nLow / Dot) + ""; // 程基
 		result[13] = (stock.m_nRef / Dot) + ""; // 琎Μ
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return result;
 		
 	}
