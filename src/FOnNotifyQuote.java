@@ -6,7 +6,7 @@ import com.sun.jna.win32.StdCallLibrary.StdCallCallback;
 
 public class FOnNotifyQuote implements StdCallCallback{
 	final SKQuoteLib skquotelib = (SKQuoteLib) Native.loadLibrary(
-			"SKOSQuoteLib", SKQuoteLib.class);
+			"SKQuoteLib", SKQuoteLib.class);
 	public void callback(short Market, short Index) {
 		int Status;
 		SKQuoteLib.Stock stock = new SKQuoteLib.Stock();
