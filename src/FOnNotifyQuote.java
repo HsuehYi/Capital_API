@@ -22,20 +22,20 @@ public class FOnNotifyQuote implements StdCallCallback{
 		double Dot = Math.pow(10, stock.m_sDecimal);
 		String[] result = new String[14];
 		try {
-		result[0] = new String(stock.m_caStockNo, "Big5").trim(); // ªÑ²¼¥N¸¹
-		result[1] = new String(stock.m_caName, "Big5").trim(); // ªÑ²¼¦WºÙ
-		result[2] = (stock.m_nBid / Dot) + ""; // ¶R»ù
-		result[3] = stock.m_nBc + ""; // ¶R¶q
-		result[4] = (stock.m_nAsk / Dot) + ""; // ½æ»ù
-		result[5] = stock.m_nAc + ""; // ½æ¶q
-		result[6] = (stock.m_nClose / Dot) + ""; // ¦¨¥æ»ù
-		result[7] = (stock.m_nClose / Dot) - (stock.m_nRef / Dot) + ""; // º¦¶^
-		result[8] = ((stock.m_nClose / Dot) / (stock.m_nRef / Dot)) - 1  + ""; // º¦¶^´T
-		result[9] = stock.m_nTickQty + ""; // ³æ¶q
-		result[10] = stock.m_nTQty + ""; // Á`¶q
-		result[11] = (stock.m_nHigh / Dot) + ""; // ³Ì°ª»ù
-		result[12] = (stock.m_nLow / Dot) + ""; // ³Ì§C»ù
-		result[13] = (stock.m_nRef / Dot) + ""; // ¬Q¦¬
+		result[0] = new String(stock.m_caStockNo, "Big5").trim(); // è‚¡ç¥¨ä»£è™Ÿ
+		result[1] = new String(stock.m_caName, "Big5").trim(); // è‚¡ç¥¨åç¨±
+		result[2] = (stock.m_nBid / Dot) + ""; // è²·åƒ¹
+		result[3] = stock.m_nBc + ""; // è²·é‡
+		result[4] = (stock.m_nAsk / Dot) + ""; // è³£åƒ¹
+		result[5] = stock.m_nAc + ""; // è³£é‡
+		result[6] = (stock.m_nClose / Dot) + ""; // æˆäº¤åƒ¹
+		result[7] = (stock.m_nClose / Dot) - (stock.m_nRef / Dot) + ""; // æ¼²è·Œ
+		result[8] = ((stock.m_nClose / Dot) / (stock.m_nRef / Dot)) - 1  + ""; // æ¼²è·Œå¹…
+		result[9] = stock.m_nTickQty + ""; // å–®é‡
+		result[10] = stock.m_nTQty + ""; // ç¸½é‡
+		result[11] = (stock.m_nHigh / Dot) + ""; // æœ€é«˜åƒ¹
+		result[12] = (stock.m_nLow / Dot) + ""; // æœ€ä½åƒ¹
+		result[13] = (stock.m_nRef / Dot) + ""; // æ˜¨æ”¶
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
